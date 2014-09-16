@@ -35,6 +35,10 @@
     "grunt-mocha-test": "^0.12.0",
     "jit-grunt": "^0.8.0",
     "mocha": "^1.21.4",
+    "pow-mongoose-fixtures": "^0.3.0",
     "time-grunt": "^1.0.0"
+  },
+  "dependencies": {
+    "mongoose": "^3.8.16"
   }
 }

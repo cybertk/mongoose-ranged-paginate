@@ -22,6 +22,13 @@ Mongoose ORM Document Pagination Based on Ranged Query
 
 ## Usage
 
+To get 20 **MyModel**s started from `1cdfb22e1f3c000000003152`,
+
+```js
+MyModel.find()
+    .paginate(20, '1cdfb22e1f3c000000003152')
+```
+
 ## Contribution
 
 ## Run Tests

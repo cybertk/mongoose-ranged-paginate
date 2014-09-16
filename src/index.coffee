@@ -1,5 +1,16 @@
+mongoose = require 'mongoose'
 
-foo = () ->
-  consolo.log('hi')
+Aggregate = require 'mongoose/lib/aggregate.js'
 
-module.exports = foo
+
+mongoose.Query.prototype.paginate = (count, next_max_id) ->
+  this.sort '-_id'
+  this.where
+    _id: { $lt: next_max_id}
+  this.limit count
+
+Aggregate.prototype.paginate = (count, next_max_id) ->
+  this.sort '-_id'
+  this.match
+    _id: { $lt: next_max_id}
+  this.limit count
