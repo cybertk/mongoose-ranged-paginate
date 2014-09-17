@@ -1,12 +1,13 @@
 {
   "name": "mongoose-ranged-paginate",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Mongoose ORM Document Query Pagination based on range query",
   "main": "lib/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "prepublish": "grunt coffee",
     "test": "grunt test"
   },
   "repository": {
