@@ -27,6 +27,17 @@ To get 20 **MyModel**s started from `1cdfb22e1f3c000000003152`,
 ```js
 MyModel.find()
     .paginate(20, '1cdfb22e1f3c000000003152')
+    .exec(function (err, models) {
+    };
+```
+
+To get 20 latest **MyModel**s
+
+```js
+MyModel.find()
+    .paginate(20)
+    .exec(function (err, models) {
+    };
 ```
 
 ## Contribution

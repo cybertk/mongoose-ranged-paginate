@@ -45,37 +45,71 @@ describe 'Ranged Paginate', ->
       done()
 
 
-  describe 'when paginate Query with next_max_id and count', ->
+  describe 'when paginate Query', ->
 
-    before (done) ->
+    describe 'Arguments with next_max_id and count', ->
 
-      FooModel.find()
-        .paginate(2, foos.Foo.foo5._id)
-        .exec (err, foos) ->
-          result = foos
-          done()
+      before (done) ->
+        FooModel.find()
+          .paginate 2, foos.Foo.foo5._id
+          .exec (err, foos) ->
+            result = foos
+            done()
 
-    it 'should return limited count of objects', ->
-      result.length.should.equal 2
+      it 'should return limited count of objects', ->
+        result.length.should.equal 2
 
-    it 'objects are paginated', ->
-      result[0].bar.should.equal '4'
-      result[1].bar.should.equal '3'
+      it 'returned objects are paginated', ->
+        result[0].bar.should.equal '4'
+        result[1].bar.should.equal '3'
+
+    describe 'Arguments with count only', ->
+
+      before (done) ->
+        FooModel.find()
+          .paginate 2
+          .exec (err, foos) ->
+            result = foos
+            done()
+
+      it 'should return limited count of objects', ->
+        result.length.should.equal 2
+
+      it 'returned objects are paginated', ->
+        result[0].bar.should.equal '5'
+        result[1].bar.should.equal '4'
+
+  describe 'when paginate Aggregate', ->
+
+    describe 'Arguments with next_max_id and count', ->
+
+      before (done) ->
+        FooModel.aggregate()
+          .paginate 2, foos.Foo.foo5._id
+          .exec (err, foos) ->
+            result = foos
+            done()
+
+      it 'should return limited count of objects', ->
+        result.length.should.equal 2
+
+      it 'objects are paginated', ->
+        result[0].bar.should.equal '4'
+        result[1].bar.should.equal '3'
 
 
-  describe 'when paginate Aggregate with next_max_id and count', ->
+    describe 'Arguments with count only', ->
 
-    before (done) ->
+      before (done) ->
+        FooModel.find()
+          .paginate 2
+          .exec (err, foos) ->
+            result = foos
+            done()
 
-      FooModel.aggregate()
-        .paginate(2, foos.Foo.foo5._id)
-        .exec (err, foos) ->
-          result = foos
-          done()
+      it 'should return limited count of objects', ->
+        result.length.should.equal 2
 
-    it 'should return limited count of objects', ->
-      result.length.should.equal 2
-
-    it 'objects are paginated', ->
-      result[0].bar.should.equal '4'
-      result[1].bar.should.equal '3'
+      it 'returned objects are paginated', ->
+        result[0].bar.should.equal '5'
+        result[1].bar.should.equal '4'
