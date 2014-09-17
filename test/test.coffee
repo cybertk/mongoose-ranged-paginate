@@ -1,4 +1,4 @@
-require '..'
+paginate = require '..'
 chai = require 'chai'
 mongoose = require 'mongoose'
 fixtures = require 'pow-mongoose-fixtures'
@@ -16,30 +16,18 @@ FooModel = mongoose.model 'Foo', FooSchema
 
 
 result = ''
-foos = ''
+foos = {}
 
 
 describe 'Ranged Paginate', ->
 
   before (done) ->
+    foos['Foo'] = {}
 
-    foos =
-      Foo:
-        foo1:
-          _id: new ObjectId()
-          bar: '1'
-        foo2:
-          _id: new ObjectId()
-          bar: '2'
-        foo3:
-          _id: new ObjectId()
-          bar: '3'
-        foo4:
-          _id: new ObjectId()
-          bar: '4'
-        foo5:
-          _id: new ObjectId()
-          bar: '5'
+    for num in [1..100]
+      foos.Foo["foo#{num}"] =
+        _id: new ObjectId()
+        bar: "#{num}"
 
     fixtures.load foos, mongoose.connection, () ->
       done()
@@ -76,8 +64,41 @@ describe 'Ranged Paginate', ->
         result.length.should.equal 2
 
       it 'returned objects are paginated', ->
-        result[0].bar.should.equal '5'
-        result[1].bar.should.equal '4'
+        result[0].bar.should.equal '100'
+        result[1].bar.should.equal '99'
+
+    describe 'with no arguments', ->
+
+      before (done) ->
+        FooModel.find()
+          .paginate()
+          .exec (err, foos) ->
+            result = foos
+            done()
+
+      it 'should return limited count of objects', ->
+        result.length.should.equal 20
+
+      it 'returned objects are paginated', ->
+        result[0].bar.should.equal '100'
+        result[1].bar.should.equal '99'
+
+    describe 'with no arguments and set default count', ->
+
+      before (done) ->
+        paginate.count = 10
+        FooModel.find()
+          .paginate()
+          .exec (err, foos) ->
+            result = foos
+            done()
+
+      after ->
+        paginate.count = 20
+
+      it 'should return limited count of objects', ->
+        result.length.should.equal 10
+
 
   describe 'when paginate Aggregate', ->
 
@@ -101,7 +122,7 @@ describe 'Ranged Paginate', ->
     describe 'Arguments with count only', ->
 
       before (done) ->
-        FooModel.find()
+        FooModel.aggregate()
           .paginate 2
           .exec (err, foos) ->
             result = foos
@@ -111,5 +132,37 @@ describe 'Ranged Paginate', ->
         result.length.should.equal 2
 
       it 'returned objects are paginated', ->
-        result[0].bar.should.equal '5'
-        result[1].bar.should.equal '4'
+        result[0].bar.should.equal '100'
+        result[1].bar.should.equal '99'
+
+    describe 'with no arguments', ->
+
+      before (done) ->
+        FooModel.aggregate()
+          .paginate()
+          .exec (err, foos) ->
+            result = foos
+            done()
+
+      it 'should return limited count of objects', ->
+        result.length.should.equal 20
+
+      it 'returned objects are paginated', ->
+        result[0].bar.should.equal '100'
+        result[1].bar.should.equal '99'
+
+    describe 'with no arguments and set default count', ->
+
+      before (done) ->
+        paginate.count = 10
+        FooModel.aggregate()
+          .paginate()
+          .exec (err, foos) ->
+            result = foos
+            done()
+
+      after ->
+        paginate.count = 20
+
+      it 'should return limited count of objects', ->
+        result.length.should.equal 10

@@ -25,6 +25,8 @@ Mongoose ORM Document Pagination Based on Ranged Query
 To get 20 **MyModel**s started from `1cdfb22e1f3c000000003152`,
 
 ```js
+require('mongoose-ranged-paginate')
+
 MyModel.find()
     .paginate(20, '1cdfb22e1f3c000000003152')
     .exec(function (err, models) {
@@ -34,8 +36,22 @@ MyModel.find()
 To get 20 latest **MyModel**s
 
 ```js
+require('mongoose-ranged-paginate')
+
 MyModel.find()
     .paginate(20)
+    .exec(function (err, models) {
+    };
+```
+
+Or set default count via `paginate.count`
+
+```js
+paginate = require('mongoose-ranged-paginate')
+paginate.count = 20
+
+MyModel.find()
+    .paginate()
     .exec(function (err, models) {
     };
 ```
