@@ -39,6 +39,7 @@ describe 'Ranged Paginate', ->
 
       before (done) ->
         FooModel.find()
+          .sort('-_id')
           .paginate 2, foos.Foo.foo5._id
           .exec (err, foos) ->
             result = foos
@@ -55,6 +56,7 @@ describe 'Ranged Paginate', ->
 
       before (done) ->
         FooModel.find()
+          .sort('-_id')
           .paginate 2
           .exec (err, foos) ->
             result = foos
@@ -71,6 +73,7 @@ describe 'Ranged Paginate', ->
 
       before (done) ->
         FooModel.find()
+          .sort('-_id')
           .paginate()
           .exec (err, foos) ->
             result = foos
@@ -88,6 +91,7 @@ describe 'Ranged Paginate', ->
       before (done) ->
         paginate.count = 10
         FooModel.find()
+          .sort('-_id')
           .paginate()
           .exec (err, foos) ->
             result = foos
@@ -106,6 +110,7 @@ describe 'Ranged Paginate', ->
 
       before (done) ->
         FooModel.aggregate()
+          .sort('-_id')
           .paginate 2, foos.Foo.foo5._id
           .exec (err, foos) ->
             result = foos
@@ -123,6 +128,7 @@ describe 'Ranged Paginate', ->
 
       before (done) ->
         FooModel.aggregate()
+          .sort('-_id')
           .paginate 2
           .exec (err, foos) ->
             result = foos
@@ -139,6 +145,7 @@ describe 'Ranged Paginate', ->
 
       before (done) ->
         FooModel.aggregate()
+          .sort('-_id')
           .paginate()
           .exec (err, foos) ->
             result = foos
@@ -156,6 +163,7 @@ describe 'Ranged Paginate', ->
       before (done) ->
         paginate.count = 10
         FooModel.aggregate()
+          .sort('-_id')
           .paginate()
           .exec (err, foos) ->
             result = foos

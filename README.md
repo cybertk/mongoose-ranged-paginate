@@ -28,6 +28,7 @@ To get 20 **MyModel**s started from `1cdfb22e1f3c000000003152`,
 require('mongoose-ranged-paginate')
 
 MyModel.find()
+    .sort('-_id')
     .paginate(20, '1cdfb22e1f3c000000003152')
     .exec(function (err, models) {
     };
