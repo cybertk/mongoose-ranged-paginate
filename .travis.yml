@@ -1,7 +1,18 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
 env:
-  - NODE_ENV=development
+- NODE_ENV=development
 services:
-  - mongodb
+- mongodb
+notifications:
+  slack:
+    secure: 1s4R0MCb+knyNxhTs/wXQ5URA6NWbSgp1WqT+ssmy6pkSAq2/i0eDxFeFAmkgMRVXTs2pP8Et9uBtjTvd9mNhau4SldSw8ULQXYh42l6GrF7HVYU1SsPCx8Gp5ojFnKXIQEFXRFkvoLW/MQm2HcytAUfeJDY8s1TuYyCEDfS8q8=
+deploy:
+  provider: npm
+  email: kyan.ql.he@gmail.com
+  api_key:
+    secure: dHeYeKycZs+3EH9bA8Ishs3j1AdcplcT28yv9YqtBVI0wO+4JptSsK6pCurIgtnY0tiEOrshQB7cgi+h0IgMcJvM6SpW6bZWvtk0VeYYCI0XU1OewJMVpQB/+VZ3C1e9HxQs66FT/TKLc41S8LIpPLrO4yRkM/Tdr6UkGKNwbcs=
+  on:
+    tags: true
+    repo: cybertk/mongoose-ranged-paginate

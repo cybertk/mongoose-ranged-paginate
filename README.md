@@ -3,8 +3,9 @@
 Mongoose ORM Document Pagination Based on Ranged Query
 
 [![Build Status](http://img.shields.io/travis/cybertk/mongoose-ranged-paginate.svg?style=flat)](https://travis-ci.org/cybertk/mongoose-ranged-paginate)
-[![Dependency Status](https://david-dm.org/cybertk/mongoose-ranged-paginate.png)](https://david-dm.org/cybertk/mongoose-ranged-paginate)
-[![Coverage Status](https://coveralls.io/repos/cybertk/mongoose-ranged-paginate/badge.png?branch=master)](https://coveralls.io/r/cybertk/mongoose-ranged-paginate?branch=master)
+[![Dependency Status](https://david-dm.org/cybertk/mongoose-ranged-paginate.svg)](https://david-dm.org/cybertk/mongoose-ranged-paginate)
+[![devDependency Status](https://david-dm.org/cybertk/mongoose-ranged-paginate/dev-status.svg)](https://david-dm.org/cybertk/mongoose-ranged-paginate#info=devDependencies)
+[![Coverage Status](https://img.shields.io/coveralls/cybertk/mongoose-ranged-paginate.svg)](https://coveralls.io/r/cybertk/mongoose-ranged-paginate)
 
 ## Features
 

@@ -33,20 +33,35 @@ module.exports = (grunt) ->
         dest: 'lib/',
         ext: '.js'
 
+    coffeecov:
+      compile:
+        src: 'src'
+        dest: 'lib'
+
     mochaTest:
       test:
         options:
-          reporter: 'spec'
+          reporter: 'mocha-phantom-coverage-reporter'
           require: 'coffee-script/register'
         src: ['test/**/*.coffee']
+
+    shell:
+      coveralls:
+        command: 'cat coverage/coverage.lcov | ./node_modules/coveralls/bin/coveralls.js src'
 
   grunt.registerTask "default", [
     "watch"
   ]
 
+  grunt.registerTask 'uploadCoverage', ->
+    return grunt.log.ok 'Bypass uploading' unless process.env['CI'] is 'true'
+
+    grunt.task.run 'shell:coveralls'
+
   grunt.registerTask "test", [
-    "coffee"
+    "coffeecov"
     "mochaTest"
+    "uploadCoverage"
   ]
 
   return
