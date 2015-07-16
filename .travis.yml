@@ -1,7 +1,10 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
 env:
-  - NODE_ENV=development
+- NODE_ENV=development
 services:
-  - mongodb
+- mongodb
+notifications:
+  slack:
+    secure: 1s4R0MCb+knyNxhTs/wXQ5URA6NWbSgp1WqT+ssmy6pkSAq2/i0eDxFeFAmkgMRVXTs2pP8Et9uBtjTvd9mNhau4SldSw8ULQXYh42l6GrF7HVYU1SsPCx8Gp5ojFnKXIQEFXRFkvoLW/MQm2HcytAUfeJDY8s1TuYyCEDfS8q8=
