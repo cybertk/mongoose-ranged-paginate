@@ -28,22 +28,22 @@
   },
   "homepage": "https://github.com/cybertk/mongoose-ranged-paginate",
   "devDependencies": {
-    "chai": "^1.9.1",
-    "coffee-script": "^1.8.0",
+    "chai": "^3.0.0",
+    "coffee-script": "^1.9.3",
     "coveralls": "^2.11.2",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
-    "grunt-contrib-coffee": "^0.11.1",
-    "grunt-mocha-test": "^0.12.0",
+    "grunt-contrib-coffee": "^0.13.0",
+    "grunt-mocha-test": "^0.12.7",
     "grunt-coffeecov": "^0.1.5",
     "grunt-shell": "^1.1.2",
     "mocha-phantom-coverage-reporter": "^0.1.0",
-    "jit-grunt": "^0.8.0",
-    "mocha": "^1.21.4",
+    "jit-grunt": "^0.9.1",
+    "mocha": "^2.2.5",
     "pow-mongoose-fixtures": "^0.3.0",
-    "time-grunt": "^1.0.0"
+    "time-grunt": "^1.2.1"
   },
   "dependencies": {
-    "mongoose": "^3.8.16"
+    "mongoose": "^4.0.7"
   }
 }
